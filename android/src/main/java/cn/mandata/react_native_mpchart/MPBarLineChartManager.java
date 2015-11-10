@@ -37,8 +37,9 @@ public class MPBarLineChartManager extends SimpleViewManager<BarLineChartBase> {
     }
 
     @Override
-    protected BarChart createViewInstance(ThemedReactContext reactContext) {
+    protected BarLineChartBase createViewInstance(ThemedReactContext reactContext) {
         BarChart chart=new BarChart(reactContext);
+         //com.facebook.react.uimanager.ViewGroupManager
 /*        *//**图表具体设置*//*
         ArrayList<BarEntry> entries = new ArrayList<>();//显示条目
         ArrayList<String> xVals = new ArrayList<String>();//横坐标标签
@@ -121,11 +122,14 @@ public class MPBarLineChartManager extends SimpleViewManager<BarLineChartBase> {
         chart.setDragDecelerationEnabled(enable);
     }
 
-    @ReactProp(name="setDragDecelerationFrictionCoef",defaultFloat = 0.50f)
+    @ReactProp(name="dragDecelerationFrictionCoef",defaultFloat = 0.50f)
     public  void  setDragDecelerationFrictionCoef(BarLineChartBase chart,float v){
         chart.setDragDecelerationFrictionCoef(v);
     }
-
+    @ReactProp(name="maxVisibleValueCount",defaultInt = 50)
+    public  void  setMaxVisibleValueCount(BarLineChartBase chart,int v){
+        chart.setMaxVisibleValueCount(v);
+    }
     //{x:{LineColor:"",LineWidth:"",TextColor:"",TextSize:""},y:{}}
     @ReactProp(name="limitLine")
     public  void  setLimitLine(BarLineChartBase chart,ReadableMap v){
@@ -175,7 +179,7 @@ public class MPBarLineChartManager extends SimpleViewManager<BarLineChartBase> {
         setYAxisInfo((YAxis) x, v);
     }
     private void setAxisInfo(AxisBase axis,ReadableMap v){
-        if(v.hasKey("Enalbe")) axis.setEnabled(v.getBoolean("Enable"));
+        if(v.hasKey("Enable")) axis.setEnabled(v.getBoolean("Enable"));
         if(v.hasKey("DrawAxisLine")) axis.setDrawAxisLine(v.getBoolean("DrawAxisLine"));
 
         if(v.hasKey("DrawGridLines")) axis.setDrawGridLines(v.getBoolean("DrawGridLines"));
@@ -184,9 +188,9 @@ public class MPBarLineChartManager extends SimpleViewManager<BarLineChartBase> {
         if(v.hasKey("TextColor")) axis.setTextColor(Color.parseColor(v.getString("TextColor")));
         if(v.hasKey("GridColor")) axis.setGridColor(Color.parseColor(v.getString("GridColor")));
 
-        if(v.hasKey("GridLineWidth")) axis.setGridLineWidth(Color.parseColor(v.getString("GridLineWidth")));
+        if(v.hasKey("GridLineWidth")) axis.setGridLineWidth((float)v.getDouble("GridLineWidth"));
         if(v.hasKey("AxisLineColor")) axis.setAxisLineColor(Color.parseColor(v.getString("AxisLineColor")));
-        if(v.hasKey("AxisLineWidth")) axis.setAxisLineWidth(Color.parseColor(v.getString("AxisLineWidth")));
+        if(v.hasKey("AxisLineWidth")) axis.setAxisLineWidth((float)(v.getDouble("AxisLineWidth")));
         if(v.hasKey("GridDashedLine")) {
             ReadableMap gdl=v.getMap("GridDashedLine");
             axis.enableGridDashedLine((float)gdl.getDouble("LineLength"),
@@ -242,6 +246,10 @@ public class MPBarLineChartManager extends SimpleViewManager<BarLineChartBase> {
     }
     @ReactProp(name="borderWidth")
     public  void  setBorderWidth(BarLineChartBase chart,double v){
-        chart.setBorderWidth((float)v);
+        chart.setBorderWidth((float) v);
+    }
+    @ReactProp(name="gridBackgroundColor")
+    public  void  setGridBackgroundColor(BarLineChartBase chart,String v){
+        chart.setGridBackgroundColor(Color.parseColor(v));
     }
 }

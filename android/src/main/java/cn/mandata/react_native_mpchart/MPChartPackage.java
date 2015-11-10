@@ -30,7 +30,10 @@ public class MPChartPackage implements ReactPackage {
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
         return Arrays.<ViewManager>asList(
                 new ChartViewManager(),
-                new MPBarChartManager()
+                new MPBarChartManager(),
+                new MPLineChartManager(),
+                new MPCombinedChartManager(),
+                new MPCandleStickChartManager()
         );
     }
 }

@@ -2,7 +2,7 @@
 var { requireNativeComponent,PropTypes } = require('react-native');
 
 var iface = {
-  name: 'BarChart',
+  name: 'CandleStickChart',
   propTypes: {
   	data:PropTypes.object,
   	touchEnabled:PropTypes.bool,
@@ -35,4 +35,4 @@ var iface = {
   },
 };
 
-module.exports = requireNativeComponent('MPBarChart', iface);
+module.exports = requireNativeComponent('MPCandleStickChart', iface);
