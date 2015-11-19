@@ -1,7 +1,8 @@
 var React=require('react-native');
 var { 
 	requireNativeComponent,
-	PropTypes 
+	PropTypes,
+  Component
 } = React;
 
 var iface = {
@@ -24,12 +25,17 @@ var iface = {
 	description:PropTypes.string,
 	backgroundColor:PropTypes.string,
 	drawGridBackground:PropTypes.bool,
+  gridBackgroundColor:PropTypes.string,
+  visibleXRange:PropTypes.array,
 	borderColor:PropTypes.string,
 	borderWidth:PropTypes.number,
 	xAxis:PropTypes.object,
 	yAxisLeft:PropTypes.object,
 	yAxisRight:PropTypes.object,
 	yAxis:PropTypes.object,
+  fitScreen:PropTypes.bool,
+  chartPadding:PropTypes.string,
+  legend:PropTypes.object,
 	scaleX: PropTypes.number,
 	scaleY: PropTypes.number,
 	translateX: PropTypes.number,
@@ -38,44 +44,101 @@ var iface = {
   },
 };
 
+       // RIGHT_OF_CHART,
+       //  RIGHT_OF_CHART_CENTER,
+       //  RIGHT_OF_CHART_INSIDE,
+       //  LEFT_OF_CHART,
+       //  LEFT_OF_CHART_CENTER,
+       //  LEFT_OF_CHART_INSIDE,
+       //  BELOW_CHART_LEFT,
+       //  BELOW_CHART_RIGHT,
+       //  BELOW_CHART_CENTER,
+       //  ABOVE_CHART_LEFT,
+       //  ABOVE_CHART_RIGHT,
+       //  ABOVE_CHART_CENTER,
+       //  PIECHART_CENTER;
+
+
 var  MPCombinedChart= requireNativeComponent('MPCombinedChart', iface);
 
 
 var CombinedChart = React.createClass({	
+    propTypes: {
+    data:PropTypes.object,
+    touchEnabled:PropTypes.bool,
+    dragEnabled:PropTypes.bool,
+    scaleEnabled:PropTypes.bool,
+    scaleXEnabled:PropTypes.bool,
+    scaleYEnabled:PropTypes.bool,
+    pinchZoom:PropTypes.bool,
+    doubleTapToZoomEnabled:PropTypes.bool,
+    highlightPerDragEnabled:PropTypes.bool,
+    highlightPerTapEnabled:PropTypes.bool,
+    dragDecelerationEnabled:PropTypes.bool,
+    dragDecelerationFrictionCoef:PropTypes.number,
+    maxVisibleValueCount:PropTypes.number,
+    limitLine:PropTypes.object,
+    description:PropTypes.string,
+    backgroundColor:PropTypes.string,
+    drawGridBackground:PropTypes.bool,
+    gridBackgroundColor:PropTypes.string,
+    visibleXRange:PropTypes.array,
+    borderColor:PropTypes.string,
+    borderWidth:PropTypes.number,
+    xAxis:PropTypes.object,
+    yAxisLeft:PropTypes.object,
+    yAxisRight:PropTypes.object,
+    yAxis:PropTypes.object,
+    fitScreen:PropTypes.bool,
+    chartPadding:PropTypes.string,
+    legend:PropTypes.object,
+    scaleX: PropTypes.number,
+    scaleY: PropTypes.number,
+    translateX: PropTypes.number,
+    translateY: PropTypes.number,
+    rotation: PropTypes.number
+  },
   render: function() {
-  	var data={};
+  	var chartData={};
   	var children=this.props.children;
     if(children.length){
       for (var i = 0; i < children.length; i++) {
         var child=children[i]
-
-        data[child.props.chartType]=child.props.data;
-
+        chartData[child.props.chartType]=child.props.data;
       }
     }else{
-       data[children.props.chartType]=children.props.data;
+       chartData[children.props.chartType]=children.props.data;
     }
-
+    var {
+      style,
+      data,
+      children,
+      ...other
+    }=this.props;
     return (
       <MPCombinedChart 
-        style={this.props.style}  
-        maxVisibleValueCount={10} 
-        xAxis={{DrawGridLines:false,GridLineWidth:0}}
-        yAxisRight={{Enable:false}} 
-        yAxis={{StartAtZero:false,DrawGridLines:false}}
-        drawGridBackground={false}
-        backgroundColor={"WHITE"} 
-        data={data}/>
+       style={this.props.style} 
+       {...other}
+       data={chartData}/>
     );
   }
 });
 
-var chart =React.Component ({
-  propTypes:{
+class chart extends Component {
+   propTypes:{
     chartType:PropTypes.string,
     data:PropTypes.object,
   }
-})
+  constructor(props) {
+    super(props);
+  }
+}
+// var chart =React.Component({
+//   propTypes:{
+//     chartType:PropTypes.string,
+//     data:PropTypes.object,
+//   }
+// })
 
 
 CombinedChart.Chart=chart;

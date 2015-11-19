@@ -17,6 +17,7 @@ import com.github.mikephil.charting.charts.CandleStickChart;
 import com.github.mikephil.charting.charts.CombinedChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -109,12 +110,14 @@ public class MPCombinedChartManager extends MPBarLineChartManager {
             }
             /*BarEntry be=new BarEntry(vals,i);
             entries.add(be);*/
-            LineDataSet dataSet=new LineDataSet(entries,label);
             ReadableMap config= map.getMap("config");
-//            dataSet.setCircleColor(Color.RED);
-//            dataSet.setCircleColorHole(Color.RED);
-//            dataSet.setCircleSize(0);
-            dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+            LineDataSet dataSet=new LineDataSet(entries,label);
+            if(config.hasKey("drawCircles")) dataSet.setDrawCircles(config.getBoolean("drawCircles"));
+            if(config.hasKey("circleSize")) dataSet.setCircleSize((float) config.getDouble("circleSize"));
+            if(config.hasKey("color")) {
+                int[] colors=new int[]{Color.parseColor(config.getString("color"))};
+                dataSet.setColors(colors);
+            }
             chartData.addDataSet(dataSet);
         }
         return  chartData;
@@ -141,7 +144,11 @@ public class MPCombinedChartManager extends MPBarLineChartManager {
                 entries.add(be);
             }
             BarDataSet dataSet=new BarDataSet(entries,label);
-            dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+            ReadableMap config= map.getMap("config");
+            if(config.hasKey("color")) {
+                int[] colors=new int[]{Color.parseColor(config.getString("color"))};
+                dataSet.setColors(colors);
+            }
             dataSetList.add(dataSet);
         }
         BarData barData=new BarData(xVals,dataSetList);
@@ -217,13 +224,32 @@ public class MPCombinedChartManager extends MPBarLineChartManager {
             entries.add(be);
         }
         CandleDataSet dataSet=new CandleDataSet(entries,label);
-        dataSet.setShadowColor(Color.DKGRAY);
-        dataSet.setShadowWidth(0.7f);
-        dataSet.setDecreasingColor(Color.parseColor("#006030"));
-        dataSet.setDecreasingPaintStyle(Paint.Style.FILL);
-        dataSet.setIncreasingColor(Color.parseColor("#A50B31"));
-        dataSet.setIncreasingPaintStyle(Paint.Style.FILL);
+
+        ReadableMap config= rm.getMap("config");
+        if(config.hasKey("color")) {
+            dataSet.setColor(Color.parseColor(config.getString("color")));
+        }
+        if(config.hasKey("shadowColor")) {
+            dataSet.setShadowColor(Color.parseColor(config.getString("shadowColor")));
+        }
+        if(config.hasKey("shadowWidth")) {
+            dataSet.setShadowWidth((float) config.getDouble("shadowWidth"));
+        }
+
+        if(config.hasKey("decreasingColor")) {
+            dataSet.setDecreasingColor(Color.parseColor(config.getString("decreasingColor")));
+        }
+        if(config.hasKey("decreasingPaintStyle")) {
+            dataSet.setDecreasingPaintStyle(Paint.Style.valueOf(config.getString("decreasingPaintStyle")));
+        }
+        if(config.hasKey("increasingColor")) {
+            dataSet.setIncreasingColor(Color.parseColor(config.getString("increasingColor")));
+        }
+        if(config.hasKey("increasingPaintStyle")) {
+            dataSet.setIncreasingPaintStyle(Paint.Style.valueOf(config.getString("increasingPaintStyle")));
+        }
         chartData.addDataSet(dataSet);
+
         return chartData;
     }
     //{line:{data:[],config:[]},bar:{},candle:{}}
@@ -251,6 +277,7 @@ public class MPCombinedChartManager extends MPBarLineChartManager {
             }
             chartData.setData(candleData);
         }
+        chart.clear();
         chart.setData(chartData);
         chart.invalidate();
     }

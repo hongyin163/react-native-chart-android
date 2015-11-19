@@ -63,8 +63,13 @@ public class MPBarChartManager extends MPBarLineChartManager {
             /*BarEntry be=new BarEntry(vals,i);
             entries.add(be);*/
             BarDataSet dataSet=new BarDataSet(entries,label);
-            dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+            ReadableMap config= map.getMap("config");
+            if(config.hasKey("color")) {
+                int[] colors=new int[]{Color.parseColor(config.getString("color"))};
+                dataSet.setColors(colors);
+            }
             barData.addDataSet(dataSet);
+
         }
         chart.setBackgroundColor(Color.WHITE);
         chart.setData(barData);

@@ -10,13 +10,17 @@ import com.facebook.react.uimanager.ThemedReactContext;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.BarLineChartBase;
 import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.LimitLine;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.DataSet;
+import com.github.mikephil.charting.formatter.XAxisValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.github.mikephil.charting.utils.ViewPortHandler;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -163,8 +167,9 @@ public class MPBarLineChartManager extends SimpleViewManager<BarLineChartBase> {
     //{x:{},y:{}}
     @ReactProp(name="xAxis")
     public  void  setXAxis(BarLineChartBase chart,ReadableMap v){
-        AxisBase x= chart.getXAxis();
+        XAxis x= chart.getXAxis();
         setAxisInfo(x, v);
+        setXAxisInfo(x, v);
     }
     @ReactProp(name="yAxisLeft")
     public  void  setYAxisLeft(BarLineChartBase chart,ReadableMap v){
@@ -179,46 +184,64 @@ public class MPBarLineChartManager extends SimpleViewManager<BarLineChartBase> {
         setYAxisInfo((YAxis) x, v);
     }
     private void setAxisInfo(AxisBase axis,ReadableMap v){
-        if(v.hasKey("Enable")) axis.setEnabled(v.getBoolean("Enable"));
-        if(v.hasKey("DrawAxisLine")) axis.setDrawAxisLine(v.getBoolean("DrawAxisLine"));
+        if(v.hasKey("enable")) axis.setEnabled(v.getBoolean("enable"));
+        if(v.hasKey("drawAxisLine")) axis.setDrawAxisLine(v.getBoolean("drawAxisLine"));
 
-        if(v.hasKey("DrawGridLines")) axis.setDrawGridLines(v.getBoolean("DrawGridLines"));
-        if(v.hasKey("DrawLabels")) axis.setDrawLabels(v.getBoolean("DrawLabels"));
+        if(v.hasKey("drawGridLines")) axis.setDrawGridLines(v.getBoolean("drawGridLines"));
+        if(v.hasKey("drawLabels")) axis.setDrawLabels(v.getBoolean("drawLabels"));
 
-        if(v.hasKey("TextColor")) axis.setTextColor(Color.parseColor(v.getString("TextColor")));
-        if(v.hasKey("GridColor")) axis.setGridColor(Color.parseColor(v.getString("GridColor")));
+        if(v.hasKey("textColor")) axis.setTextColor(Color.parseColor(v.getString("textColor")));
+        if(v.hasKey("gridColor")) axis.setGridColor(Color.parseColor(v.getString("gridColor")));
 
-        if(v.hasKey("GridLineWidth")) axis.setGridLineWidth((float)v.getDouble("GridLineWidth"));
-        if(v.hasKey("AxisLineColor")) axis.setAxisLineColor(Color.parseColor(v.getString("AxisLineColor")));
-        if(v.hasKey("AxisLineWidth")) axis.setAxisLineWidth((float)(v.getDouble("AxisLineWidth")));
-        if(v.hasKey("GridDashedLine")) {
-            ReadableMap gdl=v.getMap("GridDashedLine");
-            axis.enableGridDashedLine((float)gdl.getDouble("LineLength"),
-                    (float)gdl.getDouble("SpaceLength"),
-                    (float)gdl.getDouble("Phase"));
+        if(v.hasKey("gridLineWidth")) axis.setGridLineWidth((float)v.getDouble("gridLineWidth"));
+        if(v.hasKey("axisLineColor")) axis.setAxisLineColor(Color.parseColor(v.getString("axisLineColor")));
+        if(v.hasKey("axisLineWidth")) axis.setAxisLineWidth((float)(v.getDouble("axisLineWidth")));
+        if(v.hasKey("gridDashedLine")) {
+            ReadableMap gdl=v.getMap("gridDashedLine");
+            axis.enableGridDashedLine((float)gdl.getDouble("lineLength"),
+                    (float)gdl.getDouble("spaceLength"),
+                    (float)gdl.getDouble("phase"));
         }
+
     }
+    private  void setXAxisInfo(XAxis axis,ReadableMap v){
 
+        if(v.hasKey("labelRotationAngle")) axis.setLabelRotationAngle((float) v.getDouble("labelRotationAngle"));
+        if(v.hasKey("spaceBetweenLabels")) axis.setSpaceBetweenLabels(v.getInt("spaceBetweenLabels"));
+        if(v.hasKey("labelsToSkip")) axis.setLabelsToSkip(v.getInt("labelsToSkip"));
+        if(v.hasKey("position")) {
+            String name=v.getString("position");
+            axis.setPosition(XAxis.XAxisPosition.valueOf(name));
+        }
+
+//        if(v.hasKey("valueFormatter"))
+//            axis.setValueFormatter(new XAxisValueFormatter() {
+//                @Override
+//                public String getXValue(String s, int i, ViewPortHandler viewPortHandler) {
+//                    return String.format(s);
+//                }
+//            });
+    }
     private  void setYAxisInfo(YAxis axis,ReadableMap v){
-        if(v.hasKey("StartAtZero")) axis.setStartAtZero(v.getBoolean("StartAtZero"));
-        if(v.hasKey("AxisMaxValue")) axis.setAxisMaxValue((float) v.getDouble("AxisMaxValue"));
+        if(v.hasKey("startAtZero")) axis.setStartAtZero(v.getBoolean("startAtZero"));
+        if(v.hasKey("axisMaxValue")) axis.setAxisMaxValue((float) v.getDouble("axisMaxValue"));
 
-        if(v.hasKey("AxisMinValue")) axis.setAxisMinValue((float) v.getDouble("AxisMinValue"));
-        if(v.hasKey("Inverted")) axis.setInverted(v.getBoolean("Inverted"));
+        if(v.hasKey("axisMinValue")) axis.setAxisMinValue((float) v.getDouble("axisMinValue"));
+        if(v.hasKey("inverted")) axis.setInverted(v.getBoolean("inverted"));
 
-        if(v.hasKey("SpaceTop")) axis.setSpaceTop((float) (v.getDouble("SpaceTop")));
-        if(v.hasKey("SpaceBottom")) axis.setSpaceBottom((float) (v.getDouble("SpaceBottom")));
+        if(v.hasKey("spaceTop")) axis.setSpaceTop((float) (v.getDouble("spaceTop")));
+        if(v.hasKey("spaceBottom")) axis.setSpaceBottom((float) (v.getDouble("spaceBottom")));
 
-        if(v.hasKey("ShowOnlyMinMax")) axis.setShowOnlyMinMax(v.getBoolean("ShowOnlyMinMax"));
-        if(v.hasKey("LabelCount")) axis.setLabelCount(v.getInt("LabelCount"), true);
+        if(v.hasKey("showOnlyMinMax")) axis.setShowOnlyMinMax(v.getBoolean("showOnlyMinMax"));
+        if(v.hasKey("labelCount")) axis.setLabelCount(v.getInt("labelCount"), true);
 
-        if(v.hasKey("Position")) {
-            String name=v.getString("Position");
+        if(v.hasKey("position")) {
+            String name=v.getString("position");
             axis.setPosition(YAxis.YAxisLabelPosition.valueOf(name));
         }
 
-        if(v.hasKey("ValueFormatter"))
-            axis.setValueFormatter(new CustomYAxisValueFormatter(v.getString("ValueFormatter")) );
+        if(v.hasKey("valueFormatter"))
+            axis.setValueFormatter(new CustomYAxisValueFormatter(v.getString("valueFormatter")) );
     }
 
     //{EnableLeft:true,EnableRight:true}
@@ -251,5 +274,62 @@ public class MPBarLineChartManager extends SimpleViewManager<BarLineChartBase> {
     @ReactProp(name="gridBackgroundColor")
     public  void  setGridBackgroundColor(BarLineChartBase chart,String v){
         chart.setGridBackgroundColor(Color.parseColor(v));
+    }
+    @ReactProp(name="visibleXRange")
+      public  void  setVisibleXRange(BarLineChartBase chart,ReadableArray v){
+        chart.setVisibleXRange((float) v.getDouble(0), (float) v.getDouble(1));
+
+    }
+    @ReactProp(name="chartPadding")
+    public  void  setPadding(BarLineChartBase chart,String v){
+        String[] padding=v.split(" ");
+        if(padding.length==1){
+            int pad=(Integer.parseInt(padding[0]));
+            chart.setPadding(pad,pad,pad,pad);
+        }else if(padding.length==2){
+            int pad1=(Integer.parseInt(padding[0]));
+            int pad2=(Integer.parseInt(padding[1]));
+            chart.setPadding(pad2,pad1,pad2,pad1);
+        }else if(padding.length==4){
+            int pad1=(Integer.parseInt(padding[0]));
+            int pad2=(Integer.parseInt(padding[1]));
+            int pad3=(Integer.parseInt(padding[0]));
+            int pad4=(Integer.parseInt(padding[1]));
+            chart.setPadding(pad4,pad1,pad2,pad3);
+        }
+    }
+    @ReactProp(name="legend")
+    public void setLegend(BarLineChartBase chart,ReadableMap v){
+        Legend legend=chart.getLegend();
+        if(v.hasKey("enable")) legend.setEnabled(v.getBoolean("enable"));
+        if(v.hasKey("position"))  legend.setPosition(Legend.LegendPosition.valueOf(v.getString("position")));
+        if(v.hasKey("direction"))  legend.setDirection(Legend.LegendDirection.valueOf(v.getString("direction")));
+
+        if(v.hasKey("legendForm"))  legend.setForm(Legend.LegendForm.valueOf(v.getString("legendForm")));
+
+        if(v.hasKey("textColor"))  legend.setTextColor(Color.parseColor(v.getString("textColor")));
+        if(v.hasKey("textSize"))  legend.setTextSize((float) v.getDouble("textSize"));
+        if(v.hasKey("xOffset"))  legend.setXOffset((float) v.getDouble("xOffset"));
+        if(v.hasKey("yOffset"))  legend.setYOffset((float) v.getDouble("yOffset"));
+
+        if(v.hasKey("custom")){
+            ReadableMap custom=v.getMap("custom");
+            ReadableArray colors=custom.getArray("colors");
+            ReadableArray labels=custom.getArray("labels");
+            if(colors.size()==labels.size()) {
+                int[] cols = new int[colors.size()];
+                String[] labs = new String[colors.size()];
+                for (int j = 0; j < colors.size(); j++) {
+                    cols[j] = Color.parseColor(colors.getString(j));
+                    labs[j] = labels.getString(j);
+                }
+                legend.setCustom(cols,labs);
+            }
+        }
+    }
+
+    @ReactProp(name="fitScreen")
+    public void setLegend(BarLineChartBase chart,boolean v){
+        if(v)chart.fitScreen();
     }
 }

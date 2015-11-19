@@ -71,8 +71,14 @@ public class MPLineChartManager extends MPBarLineChartManager {
             }
             /*BarEntry be=new BarEntry(vals,i);
             entries.add(be);*/
+            ReadableMap config= map.getMap("config");
             LineDataSet dataSet=new LineDataSet(entries,label);
-            dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+            if(config.hasKey("drawCircles")) dataSet.setDrawCircles(config.getBoolean("drawCircles"));
+            if(config.hasKey("circleSize")) dataSet.setCircleSize((float) config.getDouble("circleSize"));
+            if(config.hasKey("color")) {
+                int[] colors=new int[]{Color.parseColor(config.getString("color"))};
+                dataSet.setColors(colors);
+            }
             chartData.addDataSet(dataSet);
         }
         chart.setBackgroundColor(Color.WHITE);
