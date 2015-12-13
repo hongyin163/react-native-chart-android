@@ -13,7 +13,7 @@ public class ChartViewManager  extends SimpleViewManager<ChartView> {
     public static final String REACT_CLASS = "MPChart";
     @Override
     public String getName() {
-        return this.REACT_CLASS;
+        return REACT_CLASS;
     }
 
     @Override
