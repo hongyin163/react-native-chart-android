@@ -37,7 +37,7 @@ var iface = {
 	translateX: PropTypes.number,
 	translateY: PropTypes.number,
 	rotation: PropTypes.number,	
-      renderToHardwareTextureAndroid: React.PropTypes.bool,
+  renderToHardwareTextureAndroid: React.PropTypes.bool,
   onLayout: React.PropTypes.bool,
   accessibilityLiveRegion: React.PropTypes.string,
   accessibilityComponentType: React.PropTypes.string,
