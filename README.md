@@ -1,9 +1,6 @@
 # react-native-mpchart
 react-native-mpchart provide modules to add chart to android,all charts are come from mpandroidchart library,include bar chart ,line chart,combine chart etc.
 
-[![npm version](http://img.shields.io/npm/v/react-native-webview-android.svg?style=flat-square)](https://npmjs.org/package/react-native-webview-android "View this project on npm")
-[![npm downloads](http://img.shields.io/npm/dm/react-native-webview-android.svg?style=flat-square)](https://npmjs.org/package/react-native-webview-android "View this project on npm")
-[![npm licence](http://img.shields.io/npm/l/react-native-webview-android.svg?style=flat-square)](https://npmjs.org/package/react-native-webview-android "View this project on npm")
 
 ### Installation
 
