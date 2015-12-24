@@ -1,4 +1,4 @@
-# react-native-mpchart
+# react-native-chart-android
 react-native-chart-android provide modules to add chart to android,all charts are come from mpandroidchart library,include bar chart ,line chart,combine chart etc.
 
 about MpAndroidChart ,you can read doc:
