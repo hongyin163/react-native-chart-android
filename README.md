@@ -171,6 +171,9 @@ var styles = StyleSheet.create({
 module.exports = Component;
 
 ```
+![alt tag](https://github.com/hongyin163/react-native-chart-android/tree/master/sample/chart1.JPG)
+
+![alt tag](https://github.com/hongyin163/react-native-chart-android/tree/master/sample/chart2.JPG)
 
 There are some samples in sample folder,you can download them and try to run them.
 ## License
