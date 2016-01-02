@@ -34,7 +34,7 @@ public class MPBarChartManager extends MPBarLineChartManager {
     @Override
     protected BarChart createViewInstance(ThemedReactContext reactContext) {
         BarChart chart=new BarChart(reactContext);
-
+        chart.setOnChartGestureListener(new MPChartEventListener());
         return  chart;
     }
 

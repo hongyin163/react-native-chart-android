@@ -43,6 +43,7 @@ public class MPLineChartManager extends MPBarLineChartManager {
     @Override
     protected LineChart createViewInstance(ThemedReactContext reactContext) {
         LineChart chart=new LineChart(reactContext);
+        chart.setOnChartGestureListener(new MPChartEventListener());
 
         return  chart;
     }

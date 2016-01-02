@@ -43,6 +43,7 @@ public class MPBarLineChartManager extends SimpleViewManager<BarLineChartBase> {
     @Override
     protected BarLineChartBase createViewInstance(ThemedReactContext reactContext) {
         BarChart chart=new BarChart(reactContext);
+
          //com.facebook.react.uimanager.ViewGroupManager
 /*        *//**图表具体设置*//*
         ArrayList<BarEntry> entries = new ArrayList<>();//显示条目

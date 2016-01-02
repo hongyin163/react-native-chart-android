@@ -53,6 +53,7 @@ public class MPCombinedChartManager extends MPBarLineChartManager {
     @Override
     protected CombinedChart createViewInstance(ThemedReactContext reactContext) {
         CombinedChart mChart=new CombinedChart(reactContext);
+        mChart.setOnChartGestureListener(new MPChartEventListener(mChart));
        // return  chart;
 
        /* mChart.setDescription("");
