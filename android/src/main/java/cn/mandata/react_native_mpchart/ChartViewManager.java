@@ -2,7 +2,7 @@ package cn.mandata.react_native_mpchart;
 
 import android.support.annotation.Nullable;
 
-import com.facebook.react.uimanager.ReactProp;
+import com.facebook.react.uimanager.annotations.ReactProp;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 

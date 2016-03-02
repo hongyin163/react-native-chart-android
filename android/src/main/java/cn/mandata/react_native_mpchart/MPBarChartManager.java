@@ -4,7 +4,7 @@ import android.graphics.Color;
 
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
-import com.facebook.react.uimanager.ReactProp;
+import com.facebook.react.uimanager.annotations.ReactProp;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.github.mikephil.charting.charts.BarChart;
@@ -34,7 +34,7 @@ public class MPBarChartManager extends MPBarLineChartManager {
     @Override
     protected BarChart createViewInstance(ThemedReactContext reactContext) {
         BarChart chart=new BarChart(reactContext);
-        chart.setOnChartGestureListener(new MPChartEventListener());
+
         return  chart;
     }
 

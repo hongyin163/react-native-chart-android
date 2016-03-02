@@ -4,7 +4,7 @@ import android.graphics.Color;
 
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
-import com.facebook.react.uimanager.ReactProp;
+import com.facebook.react.uimanager.annotations.ReactProp;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.github.mikephil.charting.charts.BarChart;
@@ -43,7 +43,6 @@ public class MPLineChartManager extends MPBarLineChartManager {
     @Override
     protected LineChart createViewInstance(ThemedReactContext reactContext) {
         LineChart chart=new LineChart(reactContext);
-        chart.setOnChartGestureListener(new MPChartEventListener());
 
         return  chart;
     }
@@ -80,9 +79,9 @@ public class MPLineChartManager extends MPBarLineChartManager {
                 int[] colors=new int[]{Color.parseColor(config.getString("color"))};
                 dataSet.setColors(colors);
             }
-            if(config.hasKey("lineWidth")) dataSet.setLineWidth((float) config.getDouble("lineWidth"));
             chartData.addDataSet(dataSet);
         }
+        chart.setBackgroundColor(Color.WHITE);
         chart.setData(chartData);
     }
 }

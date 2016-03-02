@@ -6,7 +6,7 @@ import android.graphics.Paint;
 
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
-import com.facebook.react.uimanager.ReactProp;
+import com.facebook.react.uimanager.annotations.ReactProp;
 import com.facebook.react.uimanager.ReactPropGroup;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
@@ -53,7 +53,6 @@ public class MPCombinedChartManager extends MPBarLineChartManager {
     @Override
     protected CombinedChart createViewInstance(ThemedReactContext reactContext) {
         CombinedChart mChart=new CombinedChart(reactContext);
-        mChart.setOnChartGestureListener(new MPChartEventListener(mChart));
        // return  chart;
 
        /* mChart.setDescription("");

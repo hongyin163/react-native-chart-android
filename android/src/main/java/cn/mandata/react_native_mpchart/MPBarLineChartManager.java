@@ -4,7 +4,7 @@ import android.graphics.Color;
 
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
-import com.facebook.react.uimanager.ReactProp;
+import com.facebook.react.uimanager.annotations.ReactProp;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.github.mikephil.charting.charts.BarChart;
@@ -43,7 +43,6 @@ public class MPBarLineChartManager extends SimpleViewManager<BarLineChartBase> {
     @Override
     protected BarLineChartBase createViewInstance(ThemedReactContext reactContext) {
         BarChart chart=new BarChart(reactContext);
-
          //com.facebook.react.uimanager.ViewGroupManager
 /*        *//**图表具体设置*//*
         ArrayList<BarEntry> entries = new ArrayList<>();//显示条目
