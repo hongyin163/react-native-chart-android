@@ -18,8 +18,8 @@ npm install react-native-chart-android --save
 * In `android/setting.gradle`
 
 ```gradle
-include ':react-native-mpchart'
-project(':react-native-mpchart').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-chart-android/android')
+include ':react-native-chart-android'
+project(':react-native-chart-android').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-chart-android/android')
 ```
 
 * In `android/app/build.gradle`
