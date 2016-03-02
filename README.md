@@ -28,7 +28,7 @@ project(':react-native-chart-android').projectDir = new File(rootProject.project
 ...
 dependencies {
   ...
-  compile project(':react-native-mpchart')
+  compile project(':react-native-chart-android')
 }
 ```
 
