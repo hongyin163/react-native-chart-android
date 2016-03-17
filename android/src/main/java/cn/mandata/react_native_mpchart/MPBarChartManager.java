@@ -73,5 +73,6 @@ public class MPBarChartManager extends MPBarLineChartManager {
         }
         chart.setBackgroundColor(Color.WHITE);
         chart.setData(barData);
+        chart.invalidate();
     }
 }
