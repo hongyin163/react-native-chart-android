@@ -1,6 +1,11 @@
-module.exports={
-	BarChart:require('./BarChart.android'),
-	LineChart:require('./LineChart.android'),
-	CandleStickChart:require('./CandleStickChart.android'),
-	CombinedChart:require('./CombinedChart.android')
+import BarChart from './BarChart.android';
+import LineChart from './LineChart.android';
+import CandleStickChart from './CandleStickChart.android';
+import CombinedChart from './CombinedChart.android';
+
+export {
+	BarChart,
+	LineChart,
+	CandleStickChart,
+	CombinedChart
 }
