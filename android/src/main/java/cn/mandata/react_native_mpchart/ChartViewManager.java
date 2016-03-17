@@ -26,6 +26,7 @@ public class ChartViewManager  extends SimpleViewManager<ChartView> {
     @ReactProp(name = "data")
     public void setData(ChartView view, @Nullable String text) {
         view.setData(text);
+        view.invalidate();
     }
 
 }

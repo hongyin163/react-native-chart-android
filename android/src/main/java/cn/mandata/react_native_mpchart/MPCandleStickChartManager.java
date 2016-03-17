@@ -94,5 +94,6 @@ public class MPCandleStickChartManager extends MPBarLineChartManager {
         chart.setMaxVisibleValueCount(50);
 
         chart.setData(chartData);
+        chart.invalidate();
     }
 }
