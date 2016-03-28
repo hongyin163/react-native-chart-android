@@ -77,6 +77,9 @@ class chart extends Component {
     constructor(props) {
         super(props);
     }
+    render(){
+        return null;
+    }
 }
 chart.propTypes = {
     chartType:PropTypes.string,
