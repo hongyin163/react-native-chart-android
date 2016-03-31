@@ -89,7 +89,7 @@ public class MPBarLineChartManager extends SimpleViewManager<BarLineChartBase> {
     }
     @ReactProp(name="dragEnabled",defaultBoolean = true)
     public  void  setDragEnabled(BarLineChartBase chart,boolean enable){
-        chart.setTouchEnabled(enable);
+        chart.setDragEnabled(enable);
     }
     @ReactProp(name="scaleEnabled",defaultBoolean = true)
     public  void  setScaleEnabled(BarLineChartBase chart,boolean enable){
@@ -191,6 +191,7 @@ public class MPBarLineChartManager extends SimpleViewManager<BarLineChartBase> {
         if(v.hasKey("drawLabels")) axis.setDrawLabels(v.getBoolean("drawLabels"));
 
         if(v.hasKey("textColor")) axis.setTextColor(Color.parseColor(v.getString("textColor")));
+        if(v.hasKey("textSize")) axis.setTextSize((float)v.getDouble("textSize"));
         if(v.hasKey("gridColor")) axis.setGridColor(Color.parseColor(v.getString("gridColor")));
 
         if(v.hasKey("gridLineWidth")) axis.setGridLineWidth((float)v.getDouble("gridLineWidth"));
