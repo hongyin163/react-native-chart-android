@@ -64,6 +64,14 @@ public class MPBarChartManager extends MPBarLineChartManager {
             entries.add(be);*/
             BarDataSet dataSet=new BarDataSet(entries,label);
             ReadableMap config= map.getMap("config");
+            if(config.hasKey("colors")){
+                ReadableArray colorsArray = config.getArray("colors");
+                ArrayList<Integer> colors = new ArrayList<>();
+                for(int c = 0; c < colorsArray.size(); c++){
+                    colors.add(Color.parseColor(colorsArray.getString(c)));
+                }
+                dataSet.setColors(colors);
+            }else
             if(config.hasKey("color")) {
                 int[] colors=new int[]{Color.parseColor(config.getString("color"))};
                 dataSet.setColors(colors);
