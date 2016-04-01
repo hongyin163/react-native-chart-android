@@ -337,7 +337,13 @@ public class MPBarLineChartManager extends SimpleViewManager<BarLineChartBase> {
 
     @ReactProp(name="zoomTo")
     public void setZoomTo(BarLineChartBase chart, ReadableMap v) {
-        chart.zoom((long)v.getDouble("scaleX"), (long)v.getDouble("scaleY"), (long)v.getDouble("xValue"), (long)v.getDouble("yValue"), AxisDependency.LEFT);
+        AxisDependency axisDependency = AxisDependency.LEFT;
+        if(v.hasKey("axisDependency")) {
+            if (v.getString("axisDependency").equalsIgnoreCase("RIGHT")) {
+                axisDependency = AxisDependency.RIGHT;
+            }
+        }
+        chart.zoom((long)v.getDouble("scaleX"), (long)v.getDouble("scaleY"), (long)v.getDouble("xValue"), (long)v.getDouble("yValue"), axisDependency);
     }
 
     @ReactProp(name="viewCenter")
