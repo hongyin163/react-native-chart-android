@@ -56,7 +56,7 @@ CandleStickChart.propTypes = {
     testID: React.PropTypes.string,
     viewCenter: React.PropTypes.array,
     zoomTo: PropTypes.object
-  },
+  }
 
 var MPCandleStickChart = requireNativeComponent('MPCandleStickChart', CandleStickChart);
 
