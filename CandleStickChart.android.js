@@ -1,10 +1,19 @@
+import React,{ requireNativeComponent, Component, PropTypes, View } from 'react-native';
 
-var React=require('react-native');
-var { requireNativeComponent,PropTypes } = React;
+class CandleStickChart extends Component {
+    constructor(props) {
+        super(props);
+    }
 
-var iface = {
-  name: 'CandleStickChart',
-  propTypes: {
+    render() {
+        return (
+            <MPCandleStickChart {...this.props}/>
+        );
+    }
+}
+
+CandleStickChart.propTypes = {
+    ...View.propTypes,
     data:PropTypes.object,
     touchEnabled:PropTypes.bool,
     dragEnabled:PropTypes.bool,
@@ -48,6 +57,7 @@ var iface = {
     viewCenter: React.PropTypes.array,
     zoomTo: PropTypes.object
   },
-};
 
-module.exports = requireNativeComponent('MPCandleStickChart', iface);
+var MPCandleStickChart = requireNativeComponent('MPCandleStickChart', CandleStickChart);
+
+export default CandleStickChart;

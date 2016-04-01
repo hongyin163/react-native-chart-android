@@ -1,18 +1,18 @@
 import React,{ requireNativeComponent, Component, PropTypes, View } from 'react-native';
 
-class LineChart extends Component {
+class PieChart extends Component {
     constructor(props) {
         super(props);
     }
 
     render() {
         return (
-            <MPLineChart {...this.props}/>
+            <MPPieChart {...this.props}/>
         );
     }
 }
 
-LineChart.propTypes = {
+PieChart.propTypes = {
     ...View.propTypes,
     data:PropTypes.object,
     touchEnabled:PropTypes.bool,
@@ -41,11 +41,9 @@ LineChart.propTypes = {
     yAxis:PropTypes.object,
     fitScreen:PropTypes.bool,
     chartPadding:PropTypes.string,
-    legend:PropTypes.object,
-    viewCenter: PropTypes.array,
-    zoomTo: PropTypes.object
+    legend:PropTypes.object
 }
 
-var MPLineChart = requireNativeComponent('MPLineChart', LineChart);
+var MPPieChart = requireNativeComponent('MPPieChart', PieChart);
 
-export default LineChart;
+export default PieChart;

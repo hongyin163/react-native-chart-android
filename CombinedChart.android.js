@@ -31,6 +31,7 @@ class CombinedChart extends Component {
 }
 
 CombinedChart.propTypes = {
+    ...View.propTypes,
     data:PropTypes.object,
     touchEnabled:PropTypes.bool,
     dragEnabled:PropTypes.bool,

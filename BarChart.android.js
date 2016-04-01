@@ -1,9 +1,19 @@
-var React=require('react-native');
-var { requireNativeComponent,PropTypes } = React;
+import React,{ requireNativeComponent, Component, PropTypes, View } from 'react-native';
 
-var iface = {
-  name: 'BarChart',
-  propTypes: {
+class BarChart extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <MPBarChart {...this.props}/>
+        );
+    }
+}
+
+BarChart.propTypes = {
+    ...View.propTypes,
     data:PropTypes.object,
     touchEnabled:PropTypes.bool,
     dragEnabled:PropTypes.bool,
@@ -46,7 +56,8 @@ var iface = {
     testID: React.PropTypes.string,
     viewCenter: React.PropTypes.array,
     zoomTo: PropTypes.object
-  },
-};
+}
 
-module.exports = requireNativeComponent('MPBarChart', iface);
+var MPBarChart = requireNativeComponent('MPBarChart', BarChart);
+
+export default BarChart;
