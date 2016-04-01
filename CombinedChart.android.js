@@ -70,7 +70,9 @@ CombinedChart.propTypes = {
     accessibilityComponentType: React.PropTypes.string,
     importantForAccessibility: React.PropTypes.string,
     accessibilityLabel: React.PropTypes.string,
-    testID: React.PropTypes.string
+    testID: React.PropTypes.string,
+    viewCenter: React.PropTypes.array,
+    zoomTo: PropTypes.object
 };
 
 class chart extends Component {

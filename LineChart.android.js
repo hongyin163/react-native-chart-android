@@ -44,6 +44,8 @@ var iface = {
   importantForAccessibility: React.PropTypes.string,
   accessibilityLabel: React.PropTypes.string,
   testID: React.PropTypes.string,
+  viewCenter: React.PropTypes.array,
+  zoomTo: PropTypes.object
   },
 };
 
