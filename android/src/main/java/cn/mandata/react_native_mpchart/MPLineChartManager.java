@@ -76,6 +76,14 @@ public class MPLineChartManager extends MPBarLineChartManager {
             if(config.hasKey("drawCircles")) dataSet.setDrawCircles(config.getBoolean("drawCircles"));
             if(config.hasKey("circleSize")) dataSet.setCircleSize((float) config.getDouble("circleSize"));
             if(config.hasKey("lineWidth")) dataSet.setLineWidth((float) config.getDouble("lineWidth"));
+            if(config.hasKey("colors")){
+                ReadableArray colorsArray = config.getArray("colors");
+                ArrayList<Integer> colors = new ArrayList<>();
+                for(int c = 0; c < colorsArray.size(); c++){
+                    colors.add(Color.parseColor(colorsArray.getString(c)));
+                }
+                dataSet.setColors(colors);
+            }else
             if(config.hasKey("color")) {
                 int[] colors=new int[]{Color.parseColor(config.getString("color"))};
                 dataSet.setColors(colors);

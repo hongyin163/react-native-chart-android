@@ -1,18 +1,18 @@
 import React,{ requireNativeComponent, Component, PropTypes, View } from 'react-native';
 
-class BarChart extends Component {
+class PieChart extends Component {
     constructor(props) {
         super(props);
     }
 
     render() {
         return (
-            <MPBarChart {...this.props}/>
+            <MPPieChart {...this.props}/>
         );
     }
 }
 
-BarChart.propTypes = {
+PieChart.propTypes = {
     ...View.propTypes,
     data:PropTypes.object,
     touchEnabled:PropTypes.bool,
@@ -44,6 +44,6 @@ BarChart.propTypes = {
     legend:PropTypes.object
 }
 
-var MPBarChart = requireNativeComponent('MPBarChart', BarChart);
+var MPPieChart = requireNativeComponent('MPPieChart', PieChart);
 
-export default BarChart;
+export default PieChart;
