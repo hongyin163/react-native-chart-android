@@ -23,6 +23,7 @@ import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.BarLineScatterCandleBubbleDataSet;
 import com.github.mikephil.charting.data.CandleData;
@@ -35,6 +36,7 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -134,12 +136,12 @@ public class MPCombinedChartManager extends MPBarLineChartManager {
     public BarData getBarData(ReadableMap rm){
 
         ReadableArray xArray=rm.getArray("xValues");
-        ArrayList<String> xVals=new ArrayList<String>();
+        List<String> xVals=new ArrayList<String>();
         for(int m=0;m<xArray.size();m++){
             xVals.add(xArray.getString(m));
         }
         ReadableArray ra=rm.getArray("yValues");
-        ArrayList<BarDataSet> dataSetList=new ArrayList<BarDataSet>();
+        List<IBarDataSet> dataSetList=new ArrayList<IBarDataSet>();
         for(int i=0;i<ra.size();i++){
             ReadableMap map=ra.getMap(i);
             ReadableArray data=map.getArray("data");

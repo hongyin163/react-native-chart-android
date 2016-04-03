@@ -41,7 +41,9 @@ LineChart.propTypes = {
     yAxis:PropTypes.object,
     fitScreen:PropTypes.bool,
     chartPadding:PropTypes.string,
-    legend:PropTypes.object
+    legend:PropTypes.object,
+    viewCenter: PropTypes.array,
+    zoomTo: PropTypes.object
 }
 
 var MPLineChart = requireNativeComponent('MPLineChart', LineChart);

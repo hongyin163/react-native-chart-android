@@ -14,6 +14,7 @@ import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.components.YAxis.AxisDependency;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -332,5 +333,21 @@ public class MPBarLineChartManager extends SimpleViewManager<BarLineChartBase> {
     @ReactProp(name="fitScreen")
     public void setLegend(BarLineChartBase chart,boolean v){
         if(v)chart.fitScreen();
+    }
+
+    @ReactProp(name="zoomTo")
+    public void setZoomTo(BarLineChartBase chart, ReadableMap v) {
+        AxisDependency axisDependency = AxisDependency.LEFT;
+        if(v.hasKey("axisDependency")) {
+            if (v.getString("axisDependency").equalsIgnoreCase("RIGHT")) {
+                axisDependency = AxisDependency.RIGHT;
+            }
+        }
+        chart.zoom((long)v.getDouble("scaleX"), (long)v.getDouble("scaleY"), (long)v.getDouble("xValue"), (long)v.getDouble("yValue"), axisDependency);
+    }
+
+    @ReactProp(name="viewCenter")
+    public void setViewCenter(BarLineChartBase chart, ReadableArray v){
+        chart.centerViewTo(v.getInt(0), (float) v.getDouble(1), AxisDependency.LEFT);
     }
 }
