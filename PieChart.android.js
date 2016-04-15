@@ -32,16 +32,15 @@ PieChart.propTypes = {
     backgroundColor:PropTypes.string,
     drawGridBackground:PropTypes.bool,
     gridBackgroundColor:PropTypes.string,
-    visibleXRange:PropTypes.array,
     borderColor:PropTypes.string,
     borderWidth:PropTypes.number,
-    xAxis:PropTypes.object,
-    yAxisLeft:PropTypes.object,
-    yAxisRight:PropTypes.object,
-    yAxis:PropTypes.object,
-    fitScreen:PropTypes.bool,
     chartPadding:PropTypes.string,
-    legend:PropTypes.object
+    legend:PropTypes.object,
+    holeRadius: PropTypes.number,
+    drawSliceText: PropTypes.bool,
+    usePercentValues: PropTypes.bool,
+    centerText: PropTypes.string,
+    centerTextRadiusPercent: PropTypes.number
 }
 
 var MPPieChart = requireNativeComponent('MPPieChart', PieChart);
