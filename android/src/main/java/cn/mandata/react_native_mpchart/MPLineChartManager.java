@@ -99,6 +99,10 @@ public class MPLineChartManager extends MPBarLineChartManager {
                 int[] colors=new int[]{Color.parseColor(config.getString("circleColor"))};
                 dataSet.setCircleColors(colors);
             }
+            if (config.hasKey("dashedLine")) {
+                String[] dashedLine = config.getString("dashedLine").split(" ");
+                dataSet.enableDashedLine(Integer.parseInt(dashedLine[0]), Integer.parseInt(dashedLine[1]), Integer.parseInt(dashedLine[2]));
+            }
             chartData.addDataSet(dataSet);
         }
         //chart.setBackgroundColor(Color.WHITE);
