@@ -43,7 +43,8 @@ LineChart.propTypes = {
     chartPadding:PropTypes.string,
     legend:PropTypes.object,
     viewCenter: PropTypes.array,
-    zoomTo: PropTypes.object
+    zoomTo: PropTypes.object,
+    extraOffsets: PropTypes.string
 }
 
 var MPLineChart = requireNativeComponent('MPLineChart', LineChart);

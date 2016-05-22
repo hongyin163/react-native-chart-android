@@ -204,7 +204,12 @@ public class MPBarLineChartManager extends SimpleViewManager<BarLineChartBase> {
                     (float)gdl.getDouble("spaceLength"),
                     (float)gdl.getDouble("phase"));
         }
-
+        if (v.hasKey("xOffset")) {
+            axis.setXOffset((float)(v.getDouble("xOffset")));
+        }
+        if (v.hasKey("yOffset")) {
+            axis.setYOffset((float)(v.getDouble("yOffset")));
+        }
     }
     private  void setXAxisInfo(XAxis axis,ReadableMap v){
 
@@ -298,6 +303,24 @@ public class MPBarLineChartManager extends SimpleViewManager<BarLineChartBase> {
             int pad3=(Integer.parseInt(padding[0]));
             int pad4=(Integer.parseInt(padding[1]));
             chart.setPadding(pad4,pad1,pad2,pad3);
+        }
+    }
+    @ReactProp(name="extraOffsets")
+    public  void  setExtraOffsets(BarLineChartBase chart, String v){
+        String[] offsets = v.split(" ");
+        if (offsets.length == 1) {
+            int offset = (Integer.parseInt(offsets[0]));
+            chart.setExtraOffsets(offset, offset, offset, offset);
+        } else if(offsets.length == 2) {
+            int offset1=(Integer.parseInt(offsets[0]));
+            int offset2=(Integer.parseInt(offsets[1]));
+            chart.setExtraOffsets(offset2, offset1, offset2, offset1);
+        } else if(offsets.length == 4) {
+            int offset1 = (Integer.parseInt(offsets[0]));
+            int offset2 = (Integer.parseInt(offsets[1]));
+            int offset3 = (Integer.parseInt(offsets[0]));
+            int offset4 = (Integer.parseInt(offsets[1]));
+            chart.setExtraOffsets(offset4, offset1, offset2, offset3);
         }
     }
     @ReactProp(name="legend")

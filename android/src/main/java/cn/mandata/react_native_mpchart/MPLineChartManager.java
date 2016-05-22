@@ -76,6 +76,7 @@ public class MPLineChartManager extends MPBarLineChartManager {
             if(config.hasKey("drawCircles")) dataSet.setDrawCircles(config.getBoolean("drawCircles"));
             if(config.hasKey("circleSize")) dataSet.setCircleSize((float) config.getDouble("circleSize"));
             if(config.hasKey("lineWidth")) dataSet.setLineWidth((float) config.getDouble("lineWidth"));
+            if(config.hasKey("drawValues")) dataSet.setDrawValues(config.getBoolean("drawValues"));
             if(config.hasKey("colors")){
                 ReadableArray colorsArray = config.getArray("colors");
                 ArrayList<Integer> colors = new ArrayList<>();
@@ -83,14 +84,24 @@ public class MPLineChartManager extends MPBarLineChartManager {
                     colors.add(Color.parseColor(colorsArray.getString(c)));
                 }
                 dataSet.setColors(colors);
-            }else
-            if(config.hasKey("color")) {
+            }else if (config.hasKey("color")) {
                 int[] colors=new int[]{Color.parseColor(config.getString("color"))};
                 dataSet.setColors(colors);
             }
+            if(config.hasKey("circleColors")){
+                ReadableArray colorsArray = config.getArray("circleColors");
+                ArrayList<Integer> colors = new ArrayList<>();
+                for(int c = 0; c < colorsArray.size(); c++){
+                    colors.add(Color.parseColor(colorsArray.getString(c)));
+                }
+                dataSet.setCircleColors(colors);
+            }else if (config.hasKey("circleColor")) {
+                int[] colors=new int[]{Color.parseColor(config.getString("circleColor"))};
+                dataSet.setCircleColors(colors);
+            }
             chartData.addDataSet(dataSet);
         }
-        chart.setBackgroundColor(Color.WHITE);
+        //chart.setBackgroundColor(Color.WHITE);
         chart.setData(chartData);
         chart.invalidate();
     }

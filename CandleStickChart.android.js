@@ -55,7 +55,8 @@ CandleStickChart.propTypes = {
     accessibilityLabel: React.PropTypes.string,
     testID: React.PropTypes.string,
     viewCenter: React.PropTypes.array,
-    zoomTo: PropTypes.object
+    zoomTo: PropTypes.object,
+    extraOffsets: PropTypes.string
   }
 
 var MPCandleStickChart = requireNativeComponent('MPCandleStickChart', CandleStickChart);
