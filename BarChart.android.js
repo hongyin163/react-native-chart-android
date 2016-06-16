@@ -1,4 +1,5 @@
-import React,{ requireNativeComponent, Component, PropTypes, View } from 'react-native';
+import React, {Component, PropTypes} from 'react';
+import {requireNativeComponent, View} from 'react-native';
 
 class BarChart extends Component {
     constructor(props) {
@@ -55,7 +56,8 @@ BarChart.propTypes = {
     accessibilityLabel: React.PropTypes.string,
     testID: React.PropTypes.string,
     viewCenter: React.PropTypes.array,
-    zoomTo: PropTypes.object
+    zoomTo: PropTypes.object,
+    extraOffsets: PropTypes.string
 }
 
 var MPBarChart = requireNativeComponent('MPBarChart', BarChart);
