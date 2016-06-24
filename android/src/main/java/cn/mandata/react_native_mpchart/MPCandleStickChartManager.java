@@ -90,7 +90,6 @@ public class MPCandleStickChartManager extends MPBarLineChartManager {
         dataSet.setIncreasingColor(Color.parseColor("#A50B31"));
         dataSet.setIncreasingPaintStyle(Paint.Style.FILL);
         chartData.addDataSet(dataSet);
-        chart.setBackgroundColor(Color.WHITE);
         chart.setMaxVisibleValueCount(50);
 
         chart.setData(chartData);
