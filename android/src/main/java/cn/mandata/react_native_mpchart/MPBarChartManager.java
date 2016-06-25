@@ -79,7 +79,6 @@ public class MPBarChartManager extends MPBarLineChartManager {
             barData.addDataSet(dataSet);
 
         }
-        chart.setBackgroundColor(Color.WHITE);
         chart.setData(barData);
         chart.invalidate();
     }
