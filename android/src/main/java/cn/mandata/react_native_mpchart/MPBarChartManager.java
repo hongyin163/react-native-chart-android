@@ -80,6 +80,26 @@ public class MPBarChartManager extends MPBarLineChartManager {
 
         }
         chart.setData(barData);
-        chart.invalidate();
+
+        /**
+         * Graph animation configurations
+         * If no animation config provided, call chart.invalidate()
+         * animation configs are maps with the following keys
+         * - duration or durationX/durationY in case of animateXY
+         * - support for easeFunction yet to be given
+         */
+        if (config.hasKey("animateX")) {
+            chart.animateX(config.getMap(animateX).getInt(duration));
+        } else if (config.hasKey("animateY")) {
+            chart.animateY(config.getMap(animateY).getInt(duration));
+        } else if (config.hasKey("animateXY")) {
+            ReadableMap animationConfig = config.getMap(animateXY);
+            chart.animateXY(
+                animationConfig.getInt(durationX),
+                animationConfig.getInt(durationY)
+            );
+        } else {
+            chart.invalidate();
+        }
     }
 }
