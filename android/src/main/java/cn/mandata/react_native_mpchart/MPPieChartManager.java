@@ -37,6 +37,12 @@ public class MPPieChartManager extends MPPieRadarChartManager {
         chart.invalidate();
     }
 
+    @ReactProp(name="backgroundColor", defaultInt = Color.WHITE)
+    public void setBackgroundColor(){
+        chart.setBackgroundColor(backgroundColor);
+        chart.invalidate();    
+    }
+    
     @ReactProp(name="drawSliceText", defaultBoolean = false)
     public void setDrawSliceText(PieChart chart, boolean enabled){
         chart.setDrawSliceText(enabled);
