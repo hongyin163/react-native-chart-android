@@ -105,7 +105,6 @@ public class MPPieChartManager extends MPPieRadarChartManager {
             pieData.addDataSet(dataSet);
 
         }
-        chart.setBackgroundColor(Color.WHITE);
         chart.setData(pieData);
         chart.invalidate();
     }
