@@ -114,15 +114,15 @@ public class MPLineChartManager extends MPBarLineChartManager {
          * - duration or durationX/durationY in case of animateXY
          * - support for easeFunction yet to be given
          */
-        if (config.hasKey("animateX")) {
-            chart.animateX(config.getMap(animateX).getInt(duration));
-        } else if (config.hasKey("animateY")) {
-            chart.animateY(config.getMap(animateY).getInt(duration));
-        } else if (config.hasKey("animateXY")) {
-            ReadableMap animationConfig = config.getMap(animateXY);
+        if (rm.hasKey("animateX")) {
+            chart.animateX(rm.getMap("animateX").getInt("duration"));
+        } else if (rm.hasKey("animateY")) {
+            chart.animateY(rm.getMap("animateY").getInt("duration"));
+        } else if (rm.hasKey("animateXY")) {
+            ReadableMap animationConfig = rm.getMap("animateXY");
             chart.animateXY(
-                animationConfig.getInt(durationX),
-                animationConfig.getInt(durationY)
+                animationConfig.getInt("durationX"),
+                animationConfig.getInt("durationY")
             );
         } else {
             chart.invalidate();
