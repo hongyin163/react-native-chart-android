@@ -103,6 +103,11 @@ public class MPLineChartManager extends MPBarLineChartManager {
                 String[] dashedLine = config.getString("dashedLine").split(" ");
                 dataSet.enableDashedLine(Integer.parseInt(dashedLine[0]), Integer.parseInt(dashedLine[1]), Integer.parseInt(dashedLine[2]));
             }
+
+            if (config.hasKey("drawFill")) dataSet.setDrawFilled(config.getBoolean("drawFill"));
+            if (config.hasKey("fillColor")) dataSet.setFillColor(Color.parseColor(config.getString("fillColor")));
+            if (config.hasKey("fillAlpha")) dataSet.setFillAlpha((int)(255 * config.getDouble("fillAlpha")));
+
             chartData.addDataSet(dataSet);
         }
         chart.setData(chartData);
