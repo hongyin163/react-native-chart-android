@@ -35,6 +35,9 @@ public class MPBarChartManager extends MPBarLineChartManager {
     protected BarChart createViewInstance(ThemedReactContext reactContext) {
         BarChart chart=new BarChart(reactContext);
 
+        // initialise event listener to bind to chart
+        new MPChartSelectionEventListener(chart);
+
         return  chart;
     }
 
