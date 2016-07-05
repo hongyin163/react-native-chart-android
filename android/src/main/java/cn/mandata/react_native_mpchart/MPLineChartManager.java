@@ -68,9 +68,11 @@ public class MPLineChartManager extends MPBarLineChartManager {
             float[] vals=new float[data.size()];
             ArrayList<Entry> entries=new ArrayList<Entry>();
             for (int j=0;j<data.size();j++){
-                vals[j]=(float)data.getDouble(j);
-                Entry be=new Entry((float)data.getDouble(j),j);
-                entries.add(be);
+                if (!data.isNull(j)) {
+                    vals[j]=(float)data.getDouble(j);
+                    Entry be=new Entry((float)data.getDouble(j),j);
+                    entries.add(be);
+                }
             }
             /*BarEntry be=new BarEntry(vals,i);
             entries.add(be);*/
