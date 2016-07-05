@@ -216,6 +216,7 @@ public class MPBarLineChartManager extends SimpleViewManager<BarLineChartBase> {
         if(v.hasKey("labelRotationAngle")) axis.setLabelRotationAngle((float) v.getDouble("labelRotationAngle"));
         if(v.hasKey("spaceBetweenLabels")) axis.setSpaceBetweenLabels(v.getInt("spaceBetweenLabels"));
         if(v.hasKey("labelsToSkip")) axis.setLabelsToSkip(v.getInt("labelsToSkip"));
+        if(v.hasKey("avoidFirstLastClipping")) axis.setAvoidFirstLastClipping(v.getBoolean("avoidFirstLastClipping"));
         if(v.hasKey("position")) {
             String name=v.getString("position");
             axis.setPosition(XAxis.XAxisPosition.valueOf(name));
