@@ -37,6 +37,12 @@ public class MPPieChartManager extends MPPieRadarChartManager {
         chart.invalidate();
     }
 
+    @ReactProp(name = "transparentCircleRadius", defaultFloat = 55f)
+    public void setTransparentCircleRadius(PieChart chart, float transparentCircleRadius){
+        chart.setTransparentCircleRadius(transparentCircleRadius);
+        chart.invalidate();
+    }
+
     @ReactProp(name="backgroundColor", defaultInt = Color.WHITE)
     public void setBackgroundColor(PieChart chart, int backgroundColor){
         chart.setBackgroundColor(backgroundColor);
@@ -102,6 +108,9 @@ public class MPPieChartManager extends MPPieRadarChartManager {
                 int[] colors=new int[]{Color.parseColor(config.getString("color"))};
                 dataSet.setColors(colors);
             }
+            if(config.hasKey("drawValues")) dataSet.setDrawValues(config.getBoolean("drawValues"));
+            if(config.hasKey("valueTextColor")) dataSet.setValueTextColor(Color.parseColor(config.getString("valueTextColor")));
+
             pieData.addDataSet(dataSet);
 
         }
