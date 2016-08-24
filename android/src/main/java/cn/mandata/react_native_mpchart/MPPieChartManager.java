@@ -27,9 +27,19 @@ public class MPPieChartManager extends MPPieRadarChartManager {
 
     @Override
     protected PieChart createViewInstance(ThemedReactContext reactContext) {
-        PieChart chart= new PieChart(reactContext);
-        return chart;
+        PieChart chart=new PieChart(reactContext);
+
+        // initialise event listener to bind to chart
+        new MPPieChartSelectionEventListener(chart);
+
+        return  chart;
     }
+
+//    @Override
+//    protected PieChart createViewInstance(ThemedReactContext reactContext) {
+//        PieChart chart= new PieChart(reactContext);
+//        return chart;
+//    }
 
     @ReactProp(name = "holeRadius", defaultFloat = 50f)
     public void setHoleRadius(PieChart chart, float holeRadius){
