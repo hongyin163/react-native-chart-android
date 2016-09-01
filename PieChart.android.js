@@ -38,6 +38,7 @@ PieChart.propTypes = {
     chartPadding:PropTypes.string,
     legend:PropTypes.object,
     holeRadius: PropTypes.number,
+    transparentCircleRadius: PropTypes.number,
     drawSliceText: PropTypes.bool,
     usePercentValues: PropTypes.bool,
     centerText: PropTypes.string,
