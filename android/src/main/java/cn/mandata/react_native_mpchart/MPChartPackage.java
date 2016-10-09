@@ -31,6 +31,7 @@ public class MPChartPackage implements ReactPackage {
         return Arrays.<ViewManager>asList(
                 new ChartViewManager(),
                 new MPBarChartManager(),
+                new MPHorizontalBarChartManager(),
                 new MPLineChartManager(),
                 new MPCombinedChartManager(),
                 new MPCandleStickChartManager(),
