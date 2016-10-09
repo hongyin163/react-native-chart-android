@@ -1,6 +1,6 @@
 package cn.mandata.react_native_mpchart;
 
-import com.facebook.react.uimanager.ThemedReactContexts;
+import com.facebook.react.uimanager.ThemedReactContext;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
 
 import java.util.ArrayList;
