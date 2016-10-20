@@ -81,6 +81,19 @@ public class MPBarChartManager extends MPBarLineChartManager {
                 int[] colors=new int[]{Color.parseColor(config.getString("color"))};
                 dataSet.setColors(colors);
             }
+
+            if(config.hasKey("valueFormatter")){
+                ReadableMap formatterMap = config.getMap("valueFormatter");
+                if(formatterMap.hasKey("type")){
+                    String type = formatterMap.getString("type");
+                    if("printf".equalsIgnoreCase(type)){
+                        String format = "";
+                        if(formatterMap.hasKey("format")) format = formatterMap.getString("format");
+                        dataSet.setValueFormatter(new PrintfValueFormatter(format));
+                    }
+                }
+            }
+
             barData.addDataSet(dataSet);
 
         }
