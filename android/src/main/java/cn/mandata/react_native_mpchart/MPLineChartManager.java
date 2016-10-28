@@ -116,6 +116,7 @@ public class MPLineChartManager extends MPBarLineChartManager {
             if (config.hasKey("drawFill")) dataSet.setDrawFilled(config.getBoolean("drawFill"));
             if (config.hasKey("fillColor")) dataSet.setFillColor(Color.parseColor(config.getString("fillColor")));
             if (config.hasKey("fillAlpha")) dataSet.setFillAlpha((int)(255 * config.getDouble("fillAlpha")));
+            if (config.hasKey("bezier")) dataSet.setDrawCubic(config.getBoolean("bezier"));
 
             chartData.addDataSet(dataSet);
         }
