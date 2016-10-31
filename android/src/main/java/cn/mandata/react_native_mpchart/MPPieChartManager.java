@@ -12,6 +12,8 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.DataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.github.mikephil.charting.formatter.PercentFormatter;
+
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -47,7 +49,7 @@ public class MPPieChartManager extends MPPieRadarChartManager {
         chart.invalidate();
     }
 
-    @ReactProp(name = "transparentCircleRadius", defaultFloat = 55f)
+    @ReactProp(name = "transparentCircleRadius", defaultFloat = 0f)
     public void setTransparentCircleRadius(PieChart chart, float transparentCircleRadius){
         chart.setTransparentCircleRadius(transparentCircleRadius);
         chart.invalidate();
@@ -65,7 +67,7 @@ public class MPPieChartManager extends MPPieRadarChartManager {
         chart.invalidate();
     }
 
-    @ReactProp(name="usePercentValues", defaultBoolean = false)
+    @ReactProp(name="usePercentValues", defaultBoolean = true)
     public void setUsePercentValues(PieChart chart, boolean enabled){
         chart.setUsePercentValues(enabled);
         chart.invalidate();
@@ -93,6 +95,8 @@ public class MPPieChartManager extends MPPieRadarChartManager {
         }
         ReadableArray ra=rm.getArray("yValues");
         PieData pieData=new PieData(xVals);
+        pieData.setValueTextSize(16f);
+        pieData.setValueTextColor(Color.WHITE);
         for(int i=0;i<ra.size();i++){
             ReadableMap map=ra.getMap(i);
             ReadableArray data=map.getArray("data");
@@ -105,6 +109,9 @@ public class MPPieChartManager extends MPPieRadarChartManager {
                 entries.add(be);
             }
             PieDataSet dataSet=new PieDataSet(entries,label);
+            dataSet.setValueFormatter(new PercentFormatter());
+            dataSet.setValueTextSize(14f);
+            dataSet.setValueTextColor(Color.WHITE);
             ReadableMap config= map.getMap("config");
             if(config.hasKey("colors")){
                 ReadableArray colorsArray = config.getArray("colors");
@@ -120,10 +127,11 @@ public class MPPieChartManager extends MPPieRadarChartManager {
             }
             if(config.hasKey("drawValues")) dataSet.setDrawValues(config.getBoolean("drawValues"));
             if(config.hasKey("valueTextColor")) dataSet.setValueTextColor(Color.parseColor(config.getString("valueTextColor")));
-
+            dataSet.setSliceSpace(3f);
             pieData.addDataSet(dataSet);
 
         }
+        chart.setUsePercentValues(true);
         chart.setData(pieData);
         chart.invalidate();
     }
