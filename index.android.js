@@ -4,6 +4,7 @@ import LineChart from './LineChart.android';
 import CandleStickChart from './CandleStickChart.android';
 import CombinedChart from './CombinedChart.android';
 import PieChart from './PieChart.android';
+import RadarChart from './RadarChart.android';
 
 export {
   BarChart,
@@ -11,5 +12,6 @@ export {
   LineChart,
   CandleStickChart,
   CombinedChart,
-  PieChart
+  PieChart,
+  RadarChart
 }
