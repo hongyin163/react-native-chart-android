@@ -35,7 +35,8 @@ public class MPChartPackage implements ReactPackage {
                 new MPLineChartManager(),
                 new MPCombinedChartManager(),
                 new MPCandleStickChartManager(),
-                new MPPieChartManager()
+                new MPPieChartManager(),
+                new MPRadarChartManager()
         );
     }
 }
