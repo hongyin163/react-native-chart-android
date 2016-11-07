@@ -68,6 +68,11 @@ public class MPBarChartManager extends MPBarLineChartManager {
             BarDataSet dataSet=new BarDataSet(entries,label);
             ReadableMap config= map.getMap("config");
             if(config.hasKey("valueTextColor")) dataSet.setValueTextColor(Color.parseColor(config.getString("valueTextColor")));
+            
+            // Text Size for bar value
+
+            if(config.hasKey("valueTextSize")) dataSet.setValueTextSize((float)config.getDouble("valueTextSize"));
+
             if(config.hasKey("drawValues")) dataSet.setDrawValues(config.getBoolean("drawValues"));
             if(config.hasKey("colors")){
                 ReadableArray colorsArray = config.getArray("colors");
