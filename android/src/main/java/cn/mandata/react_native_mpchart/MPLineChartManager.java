@@ -83,6 +83,11 @@ public class MPLineChartManager extends MPBarLineChartManager {
             if(config.hasKey("lineWidth")) dataSet.setLineWidth((float) config.getDouble("lineWidth"));
             if(config.hasKey("drawValues")) dataSet.setDrawValues(config.getBoolean("drawValues"));
             if(config.hasKey("valueTextColor")) dataSet.setValueTextColor(Color.parseColor(config.getString("valueTextColor")));
+            
+            // Text Size for bar value
+
+            if(config.hasKey("valueTextSize")) dataSet.setValueTextSize((float)config.getDouble("valueTextSize"));
+
             if (config.hasKey("drawCircleHole")) dataSet.setDrawCircleHole(config.getBoolean("drawCircleHole"));
             if(config.hasKey("drawValues")) dataSet.setDrawValues(config.getBoolean("drawValues"));
             if(config.hasKey("drawStepped")) dataSet.setDrawStepped(config.getBoolean("drawStepped"));

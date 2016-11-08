@@ -301,8 +301,8 @@ public class MPBarLineChartManager extends SimpleViewManager<BarLineChartBase> {
         }else if(padding.length==4){
             int pad1=(Integer.parseInt(padding[0]));
             int pad2=(Integer.parseInt(padding[1]));
-            int pad3=(Integer.parseInt(padding[0]));
-            int pad4=(Integer.parseInt(padding[1]));
+            int pad3=(Integer.parseInt(padding[2]));
+            int pad4=(Integer.parseInt(padding[3]));
             chart.setPadding(pad4,pad1,pad2,pad3);
         }
     }
@@ -319,8 +319,8 @@ public class MPBarLineChartManager extends SimpleViewManager<BarLineChartBase> {
         } else if(offsets.length == 4) {
             int offset1 = (Integer.parseInt(offsets[0]));
             int offset2 = (Integer.parseInt(offsets[1]));
-            int offset3 = (Integer.parseInt(offsets[0]));
-            int offset4 = (Integer.parseInt(offsets[1]));
+            int offset3 = (Integer.parseInt(offsets[2]));
+            int offset4 = (Integer.parseInt(offsets[3]));
             chart.setExtraOffsets(offset4, offset1, offset2, offset3);
         }
     }
