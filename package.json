@@ -1,6 +1,6 @@
 {
   "name": "react-native-chart-android",
-  "version": "1.0.2",
+  "version": "1.0.6",
   "description": "react-native-mpchart provide modules to add chart to android,all charts are come from mpandroidchart library.",
   "main": "index.android.js",
   "scripts": {
