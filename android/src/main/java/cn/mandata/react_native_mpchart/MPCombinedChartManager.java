@@ -35,6 +35,7 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.github.mikephil.charting.components.YAxis.AxisDependency;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -116,6 +117,12 @@ public class MPCombinedChartManager extends MPBarLineChartManager {
             LineDataSet dataSet=new LineDataSet(entries,label);
             if(config.hasKey("drawCircles")) dataSet.setDrawCircles(config.getBoolean("drawCircles"));
             if(config.hasKey("circleSize")) dataSet.setCircleSize((float) config.getDouble("circleSize"));
+            if(config.hasKey("lineWidth")) dataSet.setLineWidth((float) config.getDouble("lineWidth"));
+            if(config.hasKey("drawValues")) dataSet.setDrawValues(config.getBoolean("drawValues"));
+            if(config.hasKey("valueTextColor")) dataSet.setValueTextColor(Color.parseColor(config.getString("valueTextColor")));
+            if(config.hasKey("valueTextSize")) dataSet.setValueTextSize((float)config.getDouble("valueTextSize"));
+
+            if(config.hasKey("drawFill")) dataSet.setDrawFilled(config.getBoolean("drawFill"));
             if(config.hasKey("colors")){
                 ReadableArray colorsArray = config.getArray("colors");
                 ArrayList<Integer> colors = new ArrayList<>();
@@ -123,11 +130,19 @@ public class MPCombinedChartManager extends MPBarLineChartManager {
                     colors.add(Color.parseColor(colorsArray.getString(c)));
                 }
                 dataSet.setColors(colors);
-            }else
-            if(config.hasKey("color")) {
+            } else if(config.hasKey("color")) {
                 int[] colors=new int[]{Color.parseColor(config.getString("color"))};
                 dataSet.setColors(colors);
             }
+
+            if (config.hasKey("axisDependency")) {
+                AxisDependency axisDependency = AxisDependency.LEFT;
+                if (config.getString("axisDependency").equalsIgnoreCase("RIGHT")) {
+                    axisDependency = AxisDependency.RIGHT;
+                }
+                dataSet.setAxisDependency(axisDependency);
+            }
+
             chartData.addDataSet(dataSet);
         }
         return  chartData;
@@ -155,6 +170,7 @@ public class MPCombinedChartManager extends MPBarLineChartManager {
             }
             BarDataSet dataSet=new BarDataSet(entries,label);
             ReadableMap config= map.getMap("config");
+            if(config.hasKey("drawValues")) dataSet.setDrawValues(config.getBoolean("drawValues"));
             if(config.hasKey("colors")){
                 ReadableArray colorsArray = config.getArray("colors");
                 ArrayList<Integer> colors = new ArrayList<>();
@@ -162,11 +178,19 @@ public class MPCombinedChartManager extends MPBarLineChartManager {
                     colors.add(Color.parseColor(colorsArray.getString(c)));
                 }
                 dataSet.setColors(colors);
-            }else
-            if(config.hasKey("color")) {
+            }else if(config.hasKey("color")) {
                 int[] colors=new int[]{Color.parseColor(config.getString("color"))};
                 dataSet.setColors(colors);
             }
+
+            if (config.hasKey("axisDependency")) {
+                AxisDependency axisDependency = AxisDependency.RIGHT;
+                if (config.getString("axisDependency").equalsIgnoreCase("LEFT")) {
+                    axisDependency = AxisDependency.LEFT;
+                }
+                dataSet.setAxisDependency(axisDependency);
+            }
+
             dataSetList.add(dataSet);
         }
         BarData barData=new BarData(xVals,dataSetList);
@@ -304,51 +328,51 @@ public class MPCombinedChartManager extends MPBarLineChartManager {
     private float getRandom(float range, float startsfrom) {
         return (float) (Math.random() * range) + startsfrom;
     }
-    private LineData generateLineData() {
+    // private LineData generateLineData() {
 
-        LineData d = new LineData();
+    //     LineData d = new LineData();
 
-        ArrayList<Entry> entries = new ArrayList<Entry>();
+    //     ArrayList<Entry> entries = new ArrayList<Entry>();
 
-        for (int index = 0; index < itemcount; index++)
-            entries.add(new Entry(getRandom(15, 10), index));
+    //     for (int index = 0; index < itemcount; index++)
+    //         entries.add(new Entry(getRandom(15, 10), index));
 
-        LineDataSet set = new LineDataSet(entries, "Line DataSet");
-        set.setColor(Color.rgb(240, 238, 70));
-        set.setLineWidth(2.5f);
-        set.setCircleColor(Color.rgb(240, 238, 70));
-        set.setCircleSize(5f);
-        set.setFillColor(Color.rgb(240, 238, 70));
-        set.setDrawCubic(true);
-        set.setDrawValues(true);
-        set.setValueTextSize(10f);
-        set.setValueTextColor(Color.rgb(240, 238, 70));
+    //     LineDataSet set = new LineDataSet(entries, "Line DataSet");
+    //     set.setColor(Color.rgb(240, 238, 70));
+    //     set.setLineWidth(2.5f);
+    //     set.setCircleColor(Color.rgb(240, 238, 70));
+    //     set.setCircleSize(5f);
+    //     set.setFillColor(Color.rgb(240, 238, 70));
+    //     set.setDrawCubic(true);
+    //     set.setDrawValues(true);
+    //     set.setValueTextSize(10f);
+    //     set.setValueTextColor(Color.rgb(240, 238, 70));
 
-        set.setAxisDependency(YAxis.AxisDependency.LEFT);
+    //     set.setAxisDependency(YAxis.AxisDependency.LEFT);
 
-        d.addDataSet(set);
+    //     d.addDataSet(set);
 
-        return d;
-    }
+    //     return d;
+    // }
 
-    private BarData generateBarData() {
+    // private BarData generateBarData() {
 
-        BarData d = new BarData();
+    //     BarData d = new BarData();
 
-        ArrayList<BarEntry> entries = new ArrayList<BarEntry>();
+    //     ArrayList<BarEntry> entries = new ArrayList<BarEntry>();
 
-        for (int index = 0; index < itemcount; index++)
-            entries.add(new BarEntry(getRandom(15, 30), index));
+    //     for (int index = 0; index < itemcount; index++)
+    //         entries.add(new BarEntry(getRandom(15, 30), index));
 
-        BarDataSet set = new BarDataSet(entries, "Bar DataSet");
-        set.setColor(Color.rgb(60, 220, 78));
-        set.setValueTextColor(Color.rgb(60, 220, 78));
-        set.setValueTextSize(10f);
-        d.addDataSet(set);
+    //     BarDataSet set = new BarDataSet(entries, "Bar DataSet");
+    //     set.setColor(Color.rgb(60, 220, 78));
+    //     set.setValueTextColor(Color.rgb(60, 220, 78));
+    //     set.setValueTextSize(10f);
+    //     d.addDataSet(set);
 
-        set.setAxisDependency(YAxis.AxisDependency.LEFT);
+    //     set.setAxisDependency(YAxis.AxisDependency.LEFT);
 
-        return d;
-    }
+    //     return d;
+    // }
 
 }
