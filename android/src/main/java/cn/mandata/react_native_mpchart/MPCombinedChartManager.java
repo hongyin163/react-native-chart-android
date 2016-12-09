@@ -56,38 +56,6 @@ public class MPCombinedChartManager extends MPBarLineChartManager {
     @Override
     protected CombinedChart createViewInstance(ThemedReactContext reactContext) {
         CombinedChart mChart=new CombinedChart(reactContext);
-       // return  chart;
-
-       /* mChart.setDescription("");
-        mChart.setBackgroundColor(Color.WHITE);
-        mChart.setDrawGridBackground(false);
-        mChart.setDrawBarShadow(false);
-
-        // draw bars behind lines
-        mChart.setDrawOrder(new CombinedChart.DrawOrder[] {
-                CombinedChart.DrawOrder.BAR, CombinedChart.DrawOrder.BUBBLE, CombinedChart.DrawOrder.CANDLE, CombinedChart.DrawOrder.LINE, CombinedChart.DrawOrder.SCATTER
-        });
-
-        YAxis rightAxis = mChart.getAxisRight();
-        rightAxis.setDrawGridLines(false);
-
-        YAxis leftAxis = mChart.getAxisLeft();
-        leftAxis.setDrawGridLines(false);
-
-        XAxis xAxis = mChart.getXAxis();
-        xAxis.setPosition(XAxis.XAxisPosition.BOTH_SIDED);
-
-        CombinedData data = new CombinedData(mMonths);
-
-        data.setData(generateLineData());
-        data.setData(generateBarData());
-//        data.setData(generateBubbleData());
-//         data.setData(generateScatterData());
-//         data.setData(generateCandleData());
-
-        mChart.setData(data);
-        mChart.invalidate();*/
-
         return mChart;
     }
     //{xValues:[],yValues:[{data:[],label:"",config:{}},{...}]}
@@ -195,55 +163,6 @@ public class MPCombinedChartManager extends MPBarLineChartManager {
         }
         BarData barData=new BarData(xVals,dataSetList);
         return barData;
-
-      /*  int n=5;
-        ArrayList<String> xVals = new ArrayList<String>();
-        for (int i = 0; i < n; i++) {
-            xVals.add((i+1990) + "");
-        }
-
-        ArrayList<BarEntry> yVals1 = new ArrayList<BarEntry>();
-        ArrayList<BarEntry> yVals2 = new ArrayList<BarEntry>();
-        ArrayList<BarEntry> yVals3 = new ArrayList<BarEntry>();
-
-        float mult = 1000f;
-
-        for (int i = 0; i < n; i++) {
-            float val = (float) (Math.random() * mult) + 3;
-            yVals1.add(new BarEntry(val, i));
-        }
-
-        for (int i = 0; i < n; i++) {
-            float val = (float) (Math.random() * mult) + 3;
-            yVals2.add(new BarEntry(val, i));
-        }
-
-        for (int i = 0; i < n; i++) {
-            float val = (float) (Math.random() * mult) + 3;
-            yVals3.add(new BarEntry(val, i));
-        }
-
-        // create 3 datasets with different types
-        BarDataSet set1 = new BarDataSet(yVals1, "Company A");
-        // set1.setColors(ColorTemplate.createColors(getApplicationContext(),
-        // ColorTemplate.FRESH_COLORS));
-        set1.setColor(Color.rgb(104, 241, 175));
-        BarDataSet set2 = new BarDataSet(yVals2, "Company B");
-        set2.setColor(Color.rgb(164, 228, 251));
-        BarDataSet set3 = new BarDataSet(yVals3, "Company C");
-        set3.setColor(Color.rgb(242, 247, 158));
-
-        ArrayList<BarDataSet> dataSets = new ArrayList<BarDataSet>();
-        dataSets.add(set1);
-        dataSets.add(set2);
-        dataSets.add(set3);
-
-        BarData data = new BarData(xVals, dataSets);
-//        data.setValueFormatter(new LargeValueFormatter());
-
-        // add space between the dataset groups in percent of bar-width
-        data.setGroupSpace(80f);
-        return data;*/
     }
 
     public CandleData getCandleData(ReadableMap rm){
@@ -328,51 +247,4 @@ public class MPCombinedChartManager extends MPBarLineChartManager {
     private float getRandom(float range, float startsfrom) {
         return (float) (Math.random() * range) + startsfrom;
     }
-    // private LineData generateLineData() {
-
-    //     LineData d = new LineData();
-
-    //     ArrayList<Entry> entries = new ArrayList<Entry>();
-
-    //     for (int index = 0; index < itemcount; index++)
-    //         entries.add(new Entry(getRandom(15, 10), index));
-
-    //     LineDataSet set = new LineDataSet(entries, "Line DataSet");
-    //     set.setColor(Color.rgb(240, 238, 70));
-    //     set.setLineWidth(2.5f);
-    //     set.setCircleColor(Color.rgb(240, 238, 70));
-    //     set.setCircleSize(5f);
-    //     set.setFillColor(Color.rgb(240, 238, 70));
-    //     set.setDrawCubic(true);
-    //     set.setDrawValues(true);
-    //     set.setValueTextSize(10f);
-    //     set.setValueTextColor(Color.rgb(240, 238, 70));
-
-    //     set.setAxisDependency(YAxis.AxisDependency.LEFT);
-
-    //     d.addDataSet(set);
-
-    //     return d;
-    // }
-
-    // private BarData generateBarData() {
-
-    //     BarData d = new BarData();
-
-    //     ArrayList<BarEntry> entries = new ArrayList<BarEntry>();
-
-    //     for (int index = 0; index < itemcount; index++)
-    //         entries.add(new BarEntry(getRandom(15, 30), index));
-
-    //     BarDataSet set = new BarDataSet(entries, "Bar DataSet");
-    //     set.setColor(Color.rgb(60, 220, 78));
-    //     set.setValueTextColor(Color.rgb(60, 220, 78));
-    //     set.setValueTextSize(10f);
-    //     d.addDataSet(set);
-
-    //     set.setAxisDependency(YAxis.AxisDependency.LEFT);
-
-    //     return d;
-    // }
-
 }
