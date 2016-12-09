@@ -21,6 +21,7 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.github.mikephil.charting.components.YAxis.AxisDependency;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -83,7 +84,7 @@ public class MPLineChartManager extends MPBarLineChartManager {
             if(config.hasKey("lineWidth")) dataSet.setLineWidth((float) config.getDouble("lineWidth"));
             if(config.hasKey("drawValues")) dataSet.setDrawValues(config.getBoolean("drawValues"));
             if(config.hasKey("valueTextColor")) dataSet.setValueTextColor(Color.parseColor(config.getString("valueTextColor")));
-            
+
             // Text Size for bar value
 
             if(config.hasKey("valueTextSize")) dataSet.setValueTextSize((float)config.getDouble("valueTextSize"));
@@ -122,6 +123,13 @@ public class MPLineChartManager extends MPBarLineChartManager {
             if (config.hasKey("fillColor")) dataSet.setFillColor(Color.parseColor(config.getString("fillColor")));
             if (config.hasKey("fillAlpha")) dataSet.setFillAlpha((int)(255 * config.getDouble("fillAlpha")));
             if (config.hasKey("bezier")) dataSet.setDrawCubic(config.getBoolean("bezier"));
+            if (config.hasKey("axisDependency")) {
+                AxisDependency axisDependency = AxisDependency.LEFT;
+                if (config.getString("axisDependency").equalsIgnoreCase("RIGHT")) {
+                    axisDependency = AxisDependency.RIGHT;
+                }
+                dataSet.setAxisDependency(axisDependency);
+            }
 
             chartData.addDataSet(dataSet);
         }
