@@ -241,7 +241,13 @@ public class MPBarLineChartManager extends SimpleViewManager<BarLineChartBase> {
         if(v.hasKey("spaceBottom")) axis.setSpaceBottom((float) (v.getDouble("spaceBottom")));
 
         if(v.hasKey("showOnlyMinMax")) axis.setShowOnlyMinMax(v.getBoolean("showOnlyMinMax"));
-        if(v.hasKey("labelCount")) axis.setLabelCount(v.getInt("labelCount"), true);
+        if(v.hasKey("labelCount")) {
+            boolean labelCountForce = false;
+            if (v.hasKey("labelCountForce")) {
+                labelCountForce = v.getBoolean("labelCountForce");
+            }
+            axis.setLabelCount(v.getInt("labelCount"), labelCountForce);
+        }
 
         if(v.hasKey("position")) {
             String name=v.getString("position");
