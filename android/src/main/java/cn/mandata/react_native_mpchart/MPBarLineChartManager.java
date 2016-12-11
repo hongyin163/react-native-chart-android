@@ -338,6 +338,7 @@ public class MPBarLineChartManager extends SimpleViewManager<BarLineChartBase> {
         if(v.hasKey("direction"))  legend.setDirection(Legend.LegendDirection.valueOf(v.getString("direction")));
 
         if(v.hasKey("legendForm"))  legend.setForm(Legend.LegendForm.valueOf(v.getString("legendForm")));
+        if(v.hasKey("wordWrap")) legend.setWordWrapEnabled(v.getBoolean("wordWrap"));
 
         if(v.hasKey("textColor"))  legend.setTextColor(Color.parseColor(v.getString("textColor")));
         if(v.hasKey("textSize"))  legend.setTextSize((float) v.getDouble("textSize"));
