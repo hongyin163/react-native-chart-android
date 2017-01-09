@@ -37,31 +37,28 @@ dependencies {
 ```java
 import cn.mandata.react_native_mpchart.MPChartPackage;  // <--- import
 
-public class MainActivity extends Activity implements DefaultHardwareBackBtnHandler {
-  ......
+public class MainActivity extends ReactActivity {
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    mReactRootView = new ReactRootView(this);
+    ......
 
-    mReactInstanceManager = ReactInstanceManager.builder()
-      .setApplication(getApplication())
-      .setBundleAssetName("index.android.bundle")
-      .setJSMainModuleName("index.android")
-      .addPackage(new MainReactPackage())
-      .addPackage(new MPChartPackage()) // <------ add this line to yout MainActivity class
-      .setUseDeveloperSupport(BuildConfig.DEBUG)
-      .setInitialLifecycleState(LifecycleState.RESUMED)
-      .build();
-
-    mReactRootView.startReactApplication(mReactInstanceManager, "AndroidRNSample", null);
-
-    setContentView(mReactRootView);
-  }
-
-  ......
-
+    /**
+     * A list of packages used by the app. If the app uses additional views
+     * or modules besides the default ones, add more packages here.
+     */
+    @Override
+    protected List<ReactPackage> getPackages() {
+        return Arrays.<ReactPackage>asList(
+                new MainReactPackage(),
+                new ReactNativeIcons(Arrays.asList(
+                        new IconFont("typicons", "typicons.ttf"),
+                        new IconFont("fontawesome", "FontAwesome.otf")
+                )),
+                new MPChartPackage(),// <------ add this line to yout MainActivity class
+                new ManDataLibPackage(),
+                new BaiduVoiseLibPackage()
+        );
+    }
+    ......
 }
 ```
 
