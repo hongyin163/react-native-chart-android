@@ -126,6 +126,14 @@ public class MPPieChartManager extends MPPieRadarChartManager {
                 dataSet.setColors(colors);
             }
             if(config.hasKey("drawValues")) dataSet.setDrawValues(config.getBoolean("drawValues"));
+            if(config.hasKey("valueTextColors")){
+                ReadableArray colorsArray = config.getArray("valueTextColors");
+                ArrayList<Integer> colors = new ArrayList<>();
+                for(int c = 0; c < colorsArray.size(); c++){
+                    colors.add(Color.parseColor(colorsArray.getString(c)));
+                }
+                dataSet.setValueTextColors(colors);
+            }else
             if(config.hasKey("valueTextColor")) dataSet.setValueTextColor(Color.parseColor(config.getString("valueTextColor")));
             dataSet.setSliceSpace(3f);
             pieData.addDataSet(dataSet);
