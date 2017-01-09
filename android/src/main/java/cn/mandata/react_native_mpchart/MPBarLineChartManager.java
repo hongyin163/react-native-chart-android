@@ -348,6 +348,8 @@ public class MPBarLineChartManager extends SimpleViewManager<BarLineChartBase> {
         if(v.hasKey("textSize"))  legend.setTextSize((float) v.getDouble("textSize"));
         if(v.hasKey("xOffset"))  legend.setXOffset((float) v.getDouble("xOffset"));
         if(v.hasKey("yOffset"))  legend.setYOffset((float) v.getDouble("yOffset"));
+        if(v.hasKey("xEntrySpace"))  legend.setXEntrySpace((float) v.getDouble("xEntrySpace"));
+        if(v.hasKey("yEntrySpace"))  legend.setYEntrySpace((float) v.getDouble("yEntrySpace"));
 
         if(v.hasKey("custom")){
             ReadableMap custom=v.getMap("custom");
