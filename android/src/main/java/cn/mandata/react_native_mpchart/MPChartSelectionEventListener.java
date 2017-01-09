@@ -6,7 +6,7 @@ import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
-import com.github.mikephil.charting.charts.BarLineChartBase;
+import com.github.mikephil.charting.charts.Chart;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import com.github.mikephil.charting.data.Entry;
@@ -19,11 +19,11 @@ import com.github.mikephil.charting.highlight.Highlight;
  * use eventName 'topSelect' mapping to 'onSelect' callback prop in JS
  */
 public class MPChartSelectionEventListener implements OnChartValueSelectedListener {
-    private BarLineChartBase chart=null;
+    private Chart chart=null;
     public  MPChartSelectionEventListener(){
 
     }
-    public  MPChartSelectionEventListener(BarLineChartBase chart){
+    public  MPChartSelectionEventListener(Chart chart){
         this.chart=chart;
 
         // bind selection callback listener to chart

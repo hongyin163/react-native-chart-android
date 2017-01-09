@@ -36,6 +36,7 @@ public class MPBarLineChartManager extends SimpleViewManager<BarLineChartBase> {
     private BarChart chart;
     private BarData data;
     private BarDataSet dataSet;
+
     @Override
     public String getName() {
         return this.CLASS_NAME;
@@ -63,6 +64,9 @@ public class MPBarLineChartManager extends SimpleViewManager<BarLineChartBase> {
         chart.animateY(3000);
         //图表描述
         chart.setDescription("公司前半年财务报表(单位：万元)");*/
+        new MPChartSelectionEventListener(chart);
+
+        
         return  chart;
     }
 
