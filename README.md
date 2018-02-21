@@ -32,7 +32,7 @@ dependencies {
 }
 ```
 
-* Register Module (in MainActivity.java)
+* Register Module (in MainApplication.java)
 
 ```java
 import cn.mandata.react_native_mpchart.MPChartPackage;  // <--- import
