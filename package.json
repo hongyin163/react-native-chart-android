@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/hongyin163/react-native-chart-android/issues"
   },
-  "homepage": "https://github.com/hongyin163/react-native-chart-android#readme"
+  "homepage": "https://github.com/hongyin163/react-native-chart-android#readme",
+  "dependencies": {
+    "prop-types": "^15.5.10"
+  }
 }
